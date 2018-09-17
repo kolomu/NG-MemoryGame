@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Card } from './card/card';
 
 @Component({
   selector: 'app-root',
@@ -6,9 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  flip = false;
+  readonly frontImagePath = '../assets/front.jpg';
+  cards: Card[] = [];
 
-  rotate() {
-    this.flip = !this.flip;
+  constructor() {
+    this.cards = [
+      new Card(this.frontImagePath, '../assets/back1.jpg')
+    ]
   }
+  
 }

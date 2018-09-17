@@ -3,8 +3,8 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
 
 # TODOs
-- [ ] Create Flip 3D Animation
-- [ ] Create Card Component
+- [x] ~~Create~~Use Flip 3D Animation (thanks @ https://github.com/ritsrivastava01/ngxFlip)
+- [x] Create Card Component
 - [ ] Create Card Shuffling
 - [ ] Handle Matched / Unmatched Cards
 - [ ] Timer Component which shows how much time has passed

@@ -1,4 +1,1 @@
-<ngx-flip [flip]="flip" (click)="rotate()">
-  <div front class="front">Front</div>
-  <div back class="back">Back</div>
-</ngx-flip>
+<app-card [card]="card" *ngFor="let card of cards"></app-card>
