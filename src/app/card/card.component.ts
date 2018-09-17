@@ -7,18 +7,17 @@ import { Card } from './card';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-  @Input() card: Card;
+  @Input()
+  card: Card;
   protected flip = false;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   rotate() {
-    if(!this.card.matched) {
+    if (!this.card.matched) {
       this.flip = !this.flip;
     }
   }
-
-
 }

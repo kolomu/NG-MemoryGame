@@ -11,9 +11,6 @@ export class AppComponent {
   cards: Card[] = [];
 
   constructor() {
-    this.cards = [
-      new Card(this.frontImagePath, '../assets/back1.jpg')
-    ]
+    this.cards = [new Card(this.frontImagePath, '../assets/back1.jpg')];
   }
-  
 }

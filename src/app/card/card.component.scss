@@ -1,18 +1,18 @@
-:host{
-    ngx-flip {
-      height: 200px;
-      width: 200px;
-      .front{
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .back{
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
+:host {
+  ngx-flip {
+    height: 200px;
+    width: 200px;
+    .front {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
+    .back {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 }
