@@ -37,4 +37,10 @@ export class CardService {
     }
   }
 
+  // Compare the cards based on the front image
+  // Do not give the function identical cards (same position).
+  // This should be handled in the UI else I need to use IDs for each card...
+  public cardComparison(card1: Card, card2: Card) {
+    return card1.frontImage === card2.frontImage;
+  }
 }
