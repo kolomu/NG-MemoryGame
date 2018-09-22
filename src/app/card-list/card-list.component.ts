@@ -8,7 +8,7 @@ import { CardService } from '../card.service';
   styleUrls: ['./card-list.component.scss']
 })
 export class CardListComponent implements OnInit {
-  readonly frontImagePath = '../assets/front.png';
+  readonly frontImagePath = '../assets/img/front.png';
   cards: Card[] = [];
   activeCard1: Card;
   activeCard2: Card;
@@ -16,16 +16,18 @@ export class CardListComponent implements OnInit {
 
   constructor(private cardService: CardService) {
     try {
-      this.cardService.createCard(new Card(1, this.frontImagePath, '../assets/back1.png'));
-      this.cardService.createCard(new Card(2, this.frontImagePath, '../assets/back2.png'));
-      this.cardService.createCard(new Card(3, this.frontImagePath, '../assets/back3.png'));
-      this.cardService.createCard(new Card(4, this.frontImagePath, '../assets/back4.png'));
-      this.cardService.createCard(new Card(5, this.frontImagePath, '../assets/back5.png'));
-      this.cardService.createCard(new Card(6, this.frontImagePath, '../assets/back6.png'));
-      this.cardService.createCard(new Card(7, this.frontImagePath, '../assets/back7.png'));
-      this.cardService.createCard(new Card(8, this.frontImagePath, '../assets/back8.png'));
-      this.cardService.createCard(new Card(9, this.frontImagePath, '../assets/back9.png'));
-      this.cardService.createCard(new Card(10, this.frontImagePath, '../assets/back10.png'));
+      this.cardService.createCard(new Card(1, this.frontImagePath, '../assets/img/back1.png'));
+      this.cardService.createCard(new Card(2, this.frontImagePath, '../assets/img/back2.png'));
+      this.cardService.createCard(new Card(3, this.frontImagePath, '../assets/img/back3.png'));
+      this.cardService.createCard(new Card(4, this.frontImagePath, '../assets/img/back4.png'));
+      this.cardService.createCard(new Card(5, this.frontImagePath, '../assets/img/back5.png'));
+      this.cardService.createCard(new Card(6, this.frontImagePath, '../assets/img/back6.png'));
+      this.cardService.createCard(new Card(7, this.frontImagePath, '../assets/img/back7.png'));
+      this.cardService.createCard(new Card(8, this.frontImagePath, '../assets/img/back8.png'));
+      this.cardService.createCard(new Card(9, this.frontImagePath, '../assets/img/back9.png'));
+      this.cardService.createCard(new Card(10, this.frontImagePath, '../assets/img/back10.png'));
+      this.cardService.createCard(new Card(11, this.frontImagePath, '../assets/img/back11.png'));
+      this.cardService.createCard(new Card(12, this.frontImagePath, '../assets/img/back12.png'));
       this.cards = this.cardService.cards;
     } catch (err) {
       console.log('Some error happened while creating the cards...');
@@ -80,6 +82,7 @@ export class CardListComponent implements OnInit {
   private handleCardMatch() {
     const isMatch = this.cardService.cardComparison(this.activeCard1, this.activeCard2);
     if (isMatch) {
+      new Audio('assets/sound/correct.ogg').play();
       this.remainingCards -= 2;
       this.activeCard1.matched = true;
       this.activeCard2.matched = true;

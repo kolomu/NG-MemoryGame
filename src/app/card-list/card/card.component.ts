@@ -11,12 +11,16 @@ export class CardComponent {
   @Input() card: Card;
   @Input() protected flip = false;
   @Output() cardSelection = new EventEmitter<Card>();
+  clicked = false;
 
   constructor(private cardService: CardService) {
     this.cardService.flipCard$.subscribe(
       (card: Card) => {
         if (this.card.id === card.id) {
+          this.clicked = true;
           this.flipCard();
+        } else {
+          this.clicked = false;
         }
       }
     );
