@@ -23,7 +23,11 @@ export class CardComponent {
   }
 
   onCardClick() {
+    if (!this.card.matched) {
       this.cardSelection.emit(this.card);
+    } else {
+      console.log('This card is already matched :)');
+    }
   }
 
   flipCard() {
