@@ -12,6 +12,7 @@ export class CardListComponent implements OnInit {
   cards: Card[] = [];
   activeCard1: Card;
   activeCard2: Card;
+  remainingCards: number;
 
   constructor(private cardService: CardService) {
     try {
@@ -35,23 +36,37 @@ export class CardListComponent implements OnInit {
     }
   }
 
+  private handleCardMatch() {
+    const isMatch = this.cardService.cardComparison(this.activeCard1, this.activeCard2);
+    if (isMatch) {
+      this.remainingCards -= 2;
+      this.activeCard1.matched = true;
+      this.activeCard2.matched = true;
+    } else {
+      this.cardService.flipCard$.next(this.activeCard1);
+      this.cardService.flipCard$.next(this.activeCard2);
+    }
+    this.activeCard1 = null;
+    this.activeCard2 = null;
+  }
+
   handleCardSelection(card: Card) {
+    if (this.remainingCards === 2 && this.activeCard1) {
+      this.setCard(card);
+      this.cardService.flipCard$.next(card);
+      this.handleCardMatch();
+      console.log('FINISHED!');
+    }
+
     if (this.activeCard1 && this.activeCard2) {
-      const isMatch = this.cardService.cardComparison(this.activeCard1, this.activeCard2);
-      if (isMatch) {
-        this.activeCard1.matched = true;
-        this.activeCard2.matched = true;
-      } else {
-        this.cardService.flipCard$.next(this.activeCard1);
-        this.cardService.flipCard$.next(this.activeCard2);
-      }
-      this.activeCard1 = null;
-      this.activeCard2 = null;
+      this.handleCardMatch();
       this.setCard(card);
     } else {
       this.setCard(card);
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.remainingCards = this.cardService.cards.length;
+  }
 }
