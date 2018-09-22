@@ -1,43 +1,33 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Card } from './card';
+import { CardService } from '../../card.service';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
-export class CardComponent implements OnInit {
-  @Input()
-  card: Card;
-  protected flip = false;
-
+export class CardComponent {
+  @Input() card: Card;
+  @Input() protected flip = false;
   @Output() cardSelection = new EventEmitter<Card>();
 
-  constructor() {}
-
-  ngOnInit() {}
-
-  onCardClick() {
-    let allowedToFlip = false;
-
-    if (!this.flip) {
-      allowedToFlip = true;
-    }
-
-    // check if this card is flipable
-    if (allowedToFlip) {
-      this.flipCard();
-      this.cardSelection.emit(this.card);
-    }
+  constructor(private cardService: CardService) {
+    this.cardService.flipCard$.subscribe(
+      (card: Card) => {
+        if (this.card.id === card.id) {
+          this.flipCard();
+        }
+      }
+    );
   }
 
-  private flipCard() {
+  onCardClick() {
+      this.cardSelection.emit(this.card);
+  }
+
+  flipCard() {
     this.flip = !this.flip;
   }
 
-  rotate() {
-    if (!this.card.matched) {
-      this.flip = !this.flip;
-    }
-  }
 }

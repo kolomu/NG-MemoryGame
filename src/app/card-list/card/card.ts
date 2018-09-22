@@ -1,8 +1,10 @@
 export class Card {
-    constructor(
+
+  constructor(
+        public id: number,
         public frontImage: string,
         public backImage: string,
         public matched?: boolean) {
-            this.matched = matched || false;
+      this.matched = matched || false;
     }
 }

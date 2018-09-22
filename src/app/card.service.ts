@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Card } from './card/card';
+import { Card } from './card-list/card/card';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CardService {
   private readonly _cards: Card[] = [];
+  public flipCard$ = new Subject<Card>();
 
   constructor() { }
 
@@ -19,7 +21,8 @@ export class CardService {
     if (this._cards.some(c => c.backImage === card.backImage)) {
       throw Error('Card with that front image already exists!');
     } else {
-      this._cards.push(card, card);
+      const tmpCard = { ...card, id: 10000 + card.id };
+      this._cards.push(card, tmpCard);
     }
   }
 
@@ -42,5 +45,9 @@ export class CardService {
   // This should be handled in the UI else I need to use IDs for each card...
   public cardComparison(card1: Card, card2: Card) {
     return card1.frontImage === card2.frontImage;
+  }
+
+  public flipCard(card: Card) {
+    this.flipCard$.next(card);
   }
 }
