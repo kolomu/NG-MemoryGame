@@ -26,6 +26,40 @@ export class CardListComponent implements OnInit {
     }
   }
 
+  ngOnInit() {
+    this.remainingCards = this.cardService.cards.length;
+  }
+
+  handleCardSelection(card: Card) {
+    // check so no cards are selected twice
+    if (this.activeCard1) {
+      if (this.activeCard1.id === card.id) {
+        console.log('same card selected :|');
+        return;
+      }
+    }
+    if (this.activeCard2) {
+      if (this.activeCard2.id === card.id) {
+        console.log('same card selected :|');
+        return;
+      }
+    }
+
+    if (this.remainingCards === 2 && this.activeCard1) {
+      this.setCard(card);
+      this.cardService.flipCard$.next(card);
+      this.handleCardMatch();
+      console.log('FINISHED!');
+    }
+
+    if (this.activeCard1 && this.activeCard2) {
+      this.handleCardMatch();
+      this.setCard(card);
+    } else {
+      this.setCard(card);
+    }
+  }
+
   private setCard(card: Card) {
     if (!this.activeCard1) {
       this.activeCard1 = card;
@@ -50,23 +84,4 @@ export class CardListComponent implements OnInit {
     this.activeCard2 = null;
   }
 
-  handleCardSelection(card: Card) {
-    if (this.remainingCards === 2 && this.activeCard1) {
-      this.setCard(card);
-      this.cardService.flipCard$.next(card);
-      this.handleCardMatch();
-      console.log('FINISHED!');
-    }
-
-    if (this.activeCard1 && this.activeCard2) {
-      this.handleCardMatch();
-      this.setCard(card);
-    } else {
-      this.setCard(card);
-    }
-  }
-
-  ngOnInit() {
-    this.remainingCards = this.cardService.cards.length;
-  }
 }

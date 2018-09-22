@@ -1,23 +1,11 @@
 <ngx-flip [flip]="flip" (click)="onCardClick()" class="memory-card">
   <div
     front class="front">
-    <!-- <img [src]="card.frontImage" width="250px" height="250px" draggable="false" class="select-disable"> -->
-    <div
-        [style.background-image]="'url('+ card.frontImage + ')'"
-        [style.background-size]="'contain'"
-        [style.background-position]="'center center'"
-        [style.width]="'250px'"
-        [style.height]="'250px'">
-      </div>
+    <!-- <img [src]="card.frontImage" width="250px" height="250px" draggable="false" class="select-disable" style="display: none;"> -->
+    <div class="img-div" [style.background-image]="'url('+ card.frontImage + ')'"></div>
     </div>
   <div back class="back" >
-      <!-- <img [src]="card.backImage" width="250px" height="250px" draggable="false" class="select-disable"> -->
-    <div
-      [style.background-image]="'url(' + card.backImage + ')'"
-      [style.background-size]="'contain'"
-      [style.background-position]="'center center'"
-      [style.width]="'250px'"
-      [style.height]="'250px'">
-      </div>
+      <!-- <img [src]="card.backImage" width="250px" height="250px" draggable="false" class="select-disable" style="display: none;"> -->
+    <div class="img-div" [style.background-image]="'url(' + card.backImage + ')'"></div>
   </div>
 </ngx-flip>
