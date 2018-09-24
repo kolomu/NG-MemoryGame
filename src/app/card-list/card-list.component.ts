@@ -54,14 +54,6 @@ export class CardListComponent implements OnInit {
       }
     }
 
-    // check finish state
-    // if (this.remainingCards === 2 && this.activeCard1) {
-    //   this.setCard(card);
-    //   this.cardService.flipCard$.next(card);
-    //   this.handleCardMatch();
-    //   console.log('FINISHED!');
-    // }
-
     if (this.activeCard1 && !this.activeCard2) {
       this.setCard(card);
       const isFirstCheck = true;
@@ -74,13 +66,6 @@ export class CardListComponent implements OnInit {
       // set the first card
       this.setCard(card);
     }
-
-    // if (this.activeCard1 && this.activeCard2) {
-    //   this.handleCardMatch();
-    //   this.setCard(card);
-    // } else {
-    //   this.setCard(card);
-    // }
   }
 
   private setCard(card: Card) {
@@ -115,27 +100,4 @@ export class CardListComponent implements OnInit {
       }
     }
   }
-
-  // private handleCardMatch(shouldFlip: boolean) {
-  //   const isMatch = this.cardService.cardComparison(this.activeCard1, this.activeCard2);
-  //   if (isMatch) {
-  //     new Audio('assets/sound/correct.ogg').play();
-  //     this.remainingCards -= 2;
-  //     this.activeCard1.matched = true;
-  //     this.activeCard2.matched = true;
-  //   } else {
-  //     if (shouldFlip) {
-  //       this.cardService.flipCard$.next(this.activeCard1);
-  //       this.cardService.flipCard$.next(this.activeCard2);
-  //     }
-  //   }
-  //   this.activeCard1 = null;
-  //   this.activeCard2 = null;
-  // }
 }
-
-/*
- after 2 cards are selected compare it and
-   if it matches play the sound
-   else wait for the third card to turn the cards arround again.
-*/
