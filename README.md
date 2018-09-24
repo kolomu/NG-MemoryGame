@@ -8,7 +8,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - [x] Create Card Shuffling
 - [x] Handle Matched / Unmatched Cards
 - [x] included sounds
-- [ ] Use Flex Layout instead of bootstrap for cards
+- [x] Use Flex Layout instead of bootstrap for cards
 - [ ] Play sound when card matches
 - [ ] Timer Component which shows how much time has passed
 - [ ] Error Rate (Card in this area was shown a third time)
