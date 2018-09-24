@@ -1,7 +1,5 @@
 # NgMemory
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
-
 # TODOs
 - [x] ~~Create~~Use Flip 3D Animation (thanks @ https://github.com/ritsrivastava01/ngxFlip)
 - [x] Create Card Component
@@ -9,7 +7,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - [x] Handle Matched / Unmatched Cards
 - [x] included sounds
 - [x] Use Flex Layout instead of bootstrap for cards
-- [ ] Play sound when card matches
+- [x] Play sound when card matches
 - [ ] Timer Component which shows how much time has passed
 - [ ] Error Rate (Card in this area was shown a third time)
 - [ ] Start / Pause / Restart Button
