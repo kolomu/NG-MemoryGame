@@ -59,6 +59,7 @@ export class CardListComponent implements OnInit {
       const isFirstCheck = true;
       this.handleCardMatch(isFirstCheck);
     } else if (this.activeCard1 && this.activeCard2) {
+      // e.g. first check was false, so check again (for card flipping) and flip new card.
       const isFirstCheck = false;
       this.handleCardMatch(isFirstCheck);
       this.setCard(card);
