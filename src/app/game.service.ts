@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { CardService } from './card.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,10 @@ import { Subject } from 'rxjs';
 export class GameService {
   public remainingCards$ = new Subject<number>();
 
-  constructor() { }
+  constructor(private cardService: CardService) { }
 
+  start() {
+    this.remainingCards$.next(this.cardService.cards.length);
+  }
 
 }

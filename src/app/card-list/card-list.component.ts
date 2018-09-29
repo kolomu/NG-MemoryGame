@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Card } from './card/card';
 import { CardService } from '../card.service';
+import { GameService } from '../game.service';
 
 @Component({
   selector: 'app-card-list',
@@ -14,7 +15,7 @@ export class CardListComponent implements OnInit {
   activeCard2: Card;
   remainingCards: number;
 
-  constructor(private cardService: CardService) {
+  constructor(private cardService: CardService, private gameService: GameService) {
     try {
       this.cardService.createCard(new Card(1, this.frontImagePath, '../assets/img/back1.png'));
       this.cardService.createCard(new Card(2, this.frontImagePath, '../assets/img/back2.png'));
@@ -85,7 +86,9 @@ export class CardListComponent implements OnInit {
     if (isFirstCheck) {
       if (isMatch) {
         new Audio('assets/sound/correct.ogg').play();
+        
         this.remainingCards -= 2;
+        this.gameService.remainingCards$.next(this.remainingCards);
         this.activeCard1.matched = true;
         this.activeCard2.matched = true;
         this.activeCard1 = null;
