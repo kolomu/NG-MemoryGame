@@ -30,6 +30,7 @@ export class CardListComponent implements OnInit {
       this.cardService.createCard(new Card(11, this.frontImagePath, '../assets/img/back11.png'));
       this.cardService.createCard(new Card(12, this.frontImagePath, '../assets/img/back12.png'));
       this.cards = this.cardService.cards;
+      this.gameService.remainingCards$.next(this.cards.length);
     } catch (err) {
       console.log('Some error happened while creating the cards...');
       console.log(err);
