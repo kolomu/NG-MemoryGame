@@ -13,7 +13,7 @@ export class CardService {
 
   get cards() {
     this.shuffleCards();
-    this.flipAllCardsToBack();
+    this.resetCards();
     return this._cards;
   }
 
@@ -41,8 +41,11 @@ export class CardService {
     }
   }
 
-  private flipAllCardsToBack() {
-    this._cards.forEach(card => card.flipped = false);
+  private resetCards() {
+    this._cards.forEach(card => {
+      card.flipped = false;
+      card.matched = false;
+    });
   }
 
   // Compare the cards based on the front image
