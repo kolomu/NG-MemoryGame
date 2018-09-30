@@ -92,10 +92,10 @@ export class CardListComponent implements OnInit {
   private setCard(card: Card) {
     if (!this.activeCard1) {
       this.activeCard1 = card;
-      this.cardService.flipCard$.next(card);
+      this.cardService.flipCard(card);
     } else {
       this.activeCard2 = card;
-      this.cardService.flipCard$.next(card);
+      this.cardService.flipCard(card);
     }
   }
 
@@ -116,8 +116,8 @@ export class CardListComponent implements OnInit {
     } else {
       // is not first check (e.g. someone clicked on third card)
       if (!isMatch) {
-        this.cardService.flipCard$.next(this.activeCard1);
-        this.cardService.flipCard$.next(this.activeCard2);
+        this.cardService.flipCard(this.activeCard1);
+        this.cardService.flipCard(this.activeCard2);
         this.activeCard1 = null;
         this.activeCard2 = null;
       }

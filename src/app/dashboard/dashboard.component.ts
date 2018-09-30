@@ -45,10 +45,12 @@ export class DashboardComponent {
   }
   restart() {
     console.log('restart clicked');
+    this.gameService.start();
     return false; // don't propagate click event
   }
   end() {
     console.log('end clicked');
+    this.gameService.end();
     return false; // don't propagate click event
   }
 
