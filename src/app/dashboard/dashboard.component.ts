@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { GameService } from '../game.service';
+import { GameService, GameState } from '../game.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +8,7 @@ import { GameService } from '../game.service';
     <a href class="button primary" id="start-button" (click)="start()">start</a>
     <a href class="button" id="restart-button" (click)="restart()">restart</a>
     <a href class="button secondary" id="end-button" (click)="end()">end</a>
-    <span class="remaining-cards">Cards Remaining: {{remainingCards}}</span>
+    <span class="remaining-cards" *ngIf="gameState === 1 || gameState === 2">Cards Remaining: {{remainingCards}}</span>
   </div>
   `,
   styles: [
@@ -22,10 +22,15 @@ import { GameService } from '../game.service';
 })
 export class DashboardComponent {
   remainingCards: number;
+  gameState: GameState;
 
   constructor(private gameService: GameService) {
     this.gameService.remainingCards$.subscribe(
       (remainingCards: number) => this.remainingCards = remainingCards
+    );
+
+    this.gameService.state$.subscribe(
+      (gs) => this.gameState = gs
     );
 
     const bgm = new Audio('assets/sound/bgm.mp3');
@@ -34,8 +39,8 @@ export class DashboardComponent {
   }
 
   start() {
-    this.gameService.start();
     console.log('start clicked');
+    this.gameService.start();
     return false; // don't propagate click event
   }
   restart() {

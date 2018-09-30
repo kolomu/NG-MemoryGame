@@ -3,7 +3,7 @@ import { trigger, style, animate, transition } from '@angular/animations';
 
 import { Card } from './card/card';
 import { CardService } from '../card.service';
-import { GameService } from '../game.service';
+import { GameService, GameState } from '../game.service';
 
 @Component({
   selector: 'app-card-list',
@@ -28,6 +28,7 @@ export class CardListComponent implements OnInit {
   activeCard1: Card;
   activeCard2: Card;
   remainingCards: number;
+  gameState: GameState;
 
   constructor(private cardService: CardService, private gameService: GameService) {
     try {
@@ -48,11 +49,14 @@ export class CardListComponent implements OnInit {
       console.log('Some error happened while creating the cards...');
       console.log(err);
     }
+
+    this.gameService.state$.subscribe(
+      gs => this.gameState = gs
+    );
   }
 
   ngOnInit() {
     this.remainingCards = this.cardService.cards.length;
-    this.gameService.remainingCards$.next(this.remainingCards);
   }
 
   handleCardSelection(card: Card) {
