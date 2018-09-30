@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FlipModule } from 'ngx-flip';
 
@@ -17,6 +18,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FlipModule
   ],
   providers: [],

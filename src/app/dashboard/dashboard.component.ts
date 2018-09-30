@@ -30,7 +30,7 @@ export class DashboardComponent {
 
     const bgm = new Audio('assets/sound/bgm.mp3');
     bgm.volume = 0.05;
-    bgm.play();
+    // bgm.play();
   }
 
   start() {

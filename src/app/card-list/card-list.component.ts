@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { trigger, style, animate, transition } from '@angular/animations';
+
 import { Card } from './card/card';
 import { CardService } from '../card.service';
 import { GameService } from '../game.service';
@@ -6,7 +8,19 @@ import { GameService } from '../game.service';
 @Component({
   selector: 'app-card-list',
   templateUrl: './card-list.component.html',
-  styleUrls: ['./card-list.component.scss']
+  styleUrls: ['./card-list.component.scss'],
+  animations: [
+    trigger('show', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('1s', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [
+        style({ opacity: 1 }),
+        animate('2s', style({ opacity: 0 }))
+      ])
+    ])
+  ]
 })
 export class CardListComponent implements OnInit {
   readonly frontImagePath = '../assets/img/front.png';
@@ -38,6 +52,7 @@ export class CardListComponent implements OnInit {
 
   ngOnInit() {
     this.remainingCards = this.cardService.cards.length;
+    this.gameService.remainingCards$.next(this.remainingCards);
   }
 
   handleCardSelection(card: Card) {
@@ -86,7 +101,7 @@ export class CardListComponent implements OnInit {
     if (isFirstCheck) {
       if (isMatch) {
         new Audio('assets/sound/correct.ogg').play();
-        
+
         this.remainingCards -= 2;
         this.gameService.remainingCards$.next(this.remainingCards);
         this.activeCard1.matched = true;
