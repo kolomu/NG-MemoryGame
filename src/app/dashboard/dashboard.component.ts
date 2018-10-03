@@ -48,19 +48,31 @@ export class DashboardComponent {
   start() {
     console.log('start clicked');
     this.gameService.start();
-    this.startTimer = true;
+    this.startTimer = false;
+
+    // problem with input binding setters (timer.component.ts) is that property needs 
+    // to be changed else angular is clever enough to not run this code!
+    setTimeout( () => { 
+      this.startTimer = true; 
+    }, 0);
     return false; // don't propagate click event
   }
   restart() {
     console.log('restart clicked');
     this.gameService.start();
-    this.restartTimer = true;
+    this.restartTimer = false;
+    setTimeout( () => { 
+      this.restartTimer = true;
+    } , 0);
     return false; // don't propagate click event
   }
   end() {
     console.log('end clicked');
     this.gameService.end();
-    this.stopTimer = true;
+    this.stopTimer = false;
+    setTimeout( () => { 
+      this.stopTimer = true; 
+    }, 0);
     return false; // don't propagate click event
   }
 

@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core';
 export class TimerComponent {
   timeElapsed = 0;
   private timerId;
-
+  
   @Input()
   set start(shouldStart: boolean) {
     if (shouldStart) {
@@ -32,6 +32,7 @@ export class TimerComponent {
   }
 
   private startTimer() {
+    this.timeElapsed = 0;
     this.timerId = setInterval(() => this.increaseCount(1), 10);
   }
 
@@ -49,12 +50,31 @@ export class TimerComponent {
     this.timeElapsed += amount;
   }
 
-  // should return time in a format like this: 00:000
+  // should return time in a format like this: 00:00
   protected formatToTime(time: number): string {
     if (!this.timeElapsed) {
       return;
     }
+    let timeString = time.toString();
+    let timeStringUnmodified = time.toString();
 
-    return time.toString();
+    if (timeStringUnmodified.length < 3) {
+      timeString = '00:' + timeString;
+    }
+
+    if (timeStringUnmodified.length === 3) {
+      timeString = '0' + timeString.charAt(0) + ':' + timeStringUnmodified.substring(1);
+    }
+
+    if (timeStringUnmodified.length > 3) {
+      timeString = this.stringInsert(timeStringUnmodified, ':', 2);
+    }
+
+    return timeString;
+  }
+
+  private stringInsert(inputString: string, insertString: string, position: number): string {
+    let fullInputString = inputString;
+    return inputString.slice(0, position) + insertString + fullInputString.substring(position);
   }
 }
