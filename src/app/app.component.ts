@@ -2,9 +2,17 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  template: `
+  <div class="container">
+    <h1>Memory</h1>
+    <app-dashboard></app-dashboard>
+    <app-card-list></app-card-list>
+  </div>
+  `,
+  styles: [`
+  .container {
+    width: 1000px;
+    margin: 0 auto;
+  }`]
 })
-export class AppComponent {
-
-}
+export class AppComponent { }
