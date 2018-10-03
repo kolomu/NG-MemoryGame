@@ -12,7 +12,7 @@ import { GameService, GameState } from '../game.service';
   animations: [
     trigger('show', [
       transition(':enter', [style({ opacity: 0 }), animate('1s', style({ opacity: 1 }))]),
-      transition(':leave', [style({ opacity: 1 }), animate('2s', style({ opacity: 0 }))])
+      transition(':leave', [style({ opacity: 1 }), animate('0.35s', style({ opacity: 0 }))])
     ])
   ]
 })

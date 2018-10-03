@@ -9,7 +9,7 @@
 - [x] Use Flex Layout instead of bootstrap for cards
 - [x] Play sound when card matches
 - [x] Start / Pause / Restart Button
-- [ ] Timer Component which shows how much time has passed
+- [x] Timer Component which shows how much time has passed
 - [ ] Error Rate (Card in this area was shown a third time)
 - [ ] Congratulations Modal
 - [ ] Submit Score to List
