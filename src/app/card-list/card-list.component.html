@@ -1,5 +1,7 @@
-<!-- <h2>Remaining Cards: {{remainingCards}}</h2> -->
-
-<div class="memory-div">
-  <app-card [card]="card" *ngFor="let card of cards" (cardSelection)="handleCardSelection($event)"></app-card>
+<div class="memory-div" @show *ngIf="this.gameState === 1">
+  <app-card
+    [card]="card"
+    [flip]="card.flipped"
+    *ngFor="let card of cards"
+    (cardSelection)="handleCardSelection($event)"></app-card>
 </div>

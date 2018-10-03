@@ -14,3 +14,6 @@
 - [ ] Congratulations Modal
 - [ ] Submit Score to List
 - [ ] Highscore List
+
+# Changelog
+- [x] Fix flip last card before game end (Waiting 50 milliseconds before emitting remaining cards number)

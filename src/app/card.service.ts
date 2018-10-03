@@ -13,6 +13,7 @@ export class CardService {
 
   get cards() {
     this.shuffleCards();
+    this.resetCards();
     return this._cards;
   }
 
@@ -40,6 +41,13 @@ export class CardService {
     }
   }
 
+  private resetCards() {
+    this._cards.forEach(card => {
+      card.flipped = false;
+      card.matched = false;
+    });
+  }
+
   // Compare the cards based on the front image
   // Do not give the function identical cards (same position).
   // This should be handled in the UI else I need to use IDs for each card...
@@ -48,6 +56,7 @@ export class CardService {
   }
 
   public flipCard(card: Card) {
+    card.flipped = !card.flipped;
     this.flipCard$.next(card);
   }
 }
