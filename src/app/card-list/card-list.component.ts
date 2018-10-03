@@ -11,14 +11,8 @@ import { GameService, GameState } from '../game.service';
   styleUrls: ['./card-list.component.scss'],
   animations: [
     trigger('show', [
-      transition(':enter', [
-        style({ opacity: 0 }),
-        animate('1s', style({ opacity: 1 }))
-      ]),
-      transition(':leave', [
-        style({ opacity: 1 }),
-        animate('2s', style({ opacity: 0 }))
-      ])
+      transition(':enter', [style({ opacity: 0 }), animate('1s', style({ opacity: 1 }))]),
+      transition(':leave', [style({ opacity: 1 }), animate('2s', style({ opacity: 0 }))])
     ])
   ]
 })
@@ -34,7 +28,7 @@ export class CardListComponent implements OnInit {
     try {
       this.cardService.createCard(new Card(1, this.frontImagePath, '../assets/img/back1.png'));
       this.cardService.createCard(new Card(2, this.frontImagePath, '../assets/img/back2.png'));
-      this.cardService.createCard(new Card(3, this.frontImagePath, '../assets/img/back3.png'));
+      // this.cardService.createCard(new Card(3, this.frontImagePath, '../assets/img/back3.png'));
       // this.cardService.createCard(new Card(4, this.frontImagePath, '../assets/img/back4.png'));
       // this.cardService.createCard(new Card(5, this.frontImagePath, '../assets/img/back5.png'));
       // this.cardService.createCard(new Card(6, this.frontImagePath, '../assets/img/back6.png'));
@@ -50,15 +44,13 @@ export class CardListComponent implements OnInit {
       console.log(err);
     }
 
-    this.gameService.state$.subscribe(
-      gs => {
-        this.gameState = gs;
-        // fix remaining cards bug
-        if (gs === GameState.START) {
-          this.remainingCards = this.cardService.cards.length;
-        }
+    this.gameService.state$.subscribe(gs => {
+      this.gameState = gs;
+      // fix remaining cards bug
+      if (gs === GameState.START) {
+        this.remainingCards = this.cardService.cards.length;
       }
-    );
+    });
   }
 
   ngOnInit() {
@@ -111,13 +103,15 @@ export class CardListComponent implements OnInit {
     if (isFirstCheck) {
       if (isMatch) {
         new Audio('assets/sound/correct.ogg').play();
-
         this.remainingCards -= 2;
-        this.gameService.remainingCards$.next(this.remainingCards);
-        this.activeCard1.matched = true;
-        this.activeCard2.matched = true;
-        this.activeCard1 = null;
-        this.activeCard2 = null;
+        // Wait for 50 milliseconds for last card flip animation else it gets skipped ?!
+        setTimeout(() => {
+          this.gameService.remainingCards$.next(this.remainingCards);
+          this.activeCard1.matched = true;
+          this.activeCard2.matched = true;
+          this.activeCard1 = null;
+          this.activeCard2 = null;
+        }, 50);
       }
     } else {
       // is not first check (e.g. someone clicked on third card)
