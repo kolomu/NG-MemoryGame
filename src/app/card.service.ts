@@ -43,6 +43,7 @@ export class CardService {
     this._cards.forEach(card => {
       card.flipped = false;
       card.matched = false;
+      card.amountFlipped = 0;
     });
   }
 
@@ -55,6 +56,7 @@ export class CardService {
 
   public flipCard(card: Card) {
     card.flipped = !card.flipped;
+    card.amountFlipped += 1;
     this.flipCard$.next(card);
   }
 }

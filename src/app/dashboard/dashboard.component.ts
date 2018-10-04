@@ -10,6 +10,7 @@ import { GameService, GameState } from '../game.service';
     <a href class="button secondary" id="end-button" (click)="end()">end</a>
     <span class="remaining-cards" *ngIf="gameState === 1 || gameState === 2">Cards Remaining: {{ remainingCards }}</span>
     <app-timer [start]="startTimer" [stop]="stopTimer" [restart]="restartTimer"></app-timer>
+    <app-skill *ngIf="gameState === 1 || gameState === 2"></app-skill>
   </div>
   `,
   styles: [

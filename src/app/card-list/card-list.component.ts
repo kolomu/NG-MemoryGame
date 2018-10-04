@@ -36,9 +36,9 @@ export class CardListComponent implements OnInit {
     try {
       this.cardService.createCard(new Card(1, this.frontImagePath, '../assets/img/back1.png'));
       this.cardService.createCard(new Card(2, this.frontImagePath, '../assets/img/back2.png'));
-      // this.cardService.createCard(new Card(3, this.frontImagePath, '../assets/img/back3.png'));
-      // this.cardService.createCard(new Card(4, this.frontImagePath, '../assets/img/back4.png'));
-      // this.cardService.createCard(new Card(5, this.frontImagePath, '../assets/img/back5.png'));
+      this.cardService.createCard(new Card(3, this.frontImagePath, '../assets/img/back3.png'));
+      this.cardService.createCard(new Card(4, this.frontImagePath, '../assets/img/back4.png'));
+      this.cardService.createCard(new Card(5, this.frontImagePath, '../assets/img/back5.png'));
       // this.cardService.createCard(new Card(6, this.frontImagePath, '../assets/img/back6.png'));
       // this.cardService.createCard(new Card(7, this.frontImagePath, '../assets/img/back7.png'));
       // this.cardService.createCard(new Card(8, this.frontImagePath, '../assets/img/back8.png'));
