@@ -13,12 +13,16 @@ import { GameService, GameState } from '../game.service';
   </div>
   `,
   styles: [
-    `.dashboard { margin-left: 10px; }
-    .remaining-cards {
-      float: right;
-      display: inline-block;
-      margin-top: 15px;
-    }`
+    `
+      .dashboard {
+        margin-left: 10px;
+      }
+      .remaining-cards {
+        float: right;
+        display: inline-block;
+        margin-top: 15px;
+      }
+    `
   ]
 })
 export class DashboardComponent {
@@ -31,14 +35,23 @@ export class DashboardComponent {
 
   constructor(private gameService: GameService) {
     this.gameService.remainingCards$.subscribe(
-      (remainingCards: number) => this.remainingCards = remainingCards
+      (remainingCards: number) => (this.remainingCards = remainingCards)
     );
 
-    this.gameService.state$.subscribe(
-      (gs) => {
-        this.gameState = gs;
+    this.gameService.state$.subscribe(gs => {
+      this.gameState = gs;
+
+      switch (gs) {
+        case GameState.START: {
+          this.startTimerFn();
+          break;
+        }
+        case GameState.END: {
+          this.stopTimerFn();
+          break;
+        }
       }
-    );
+    });
 
     const bgm = new Audio('assets/sound/bgm.mp3');
     bgm.volume = 0.05;
@@ -46,34 +59,41 @@ export class DashboardComponent {
   }
 
   start() {
-    console.log('start clicked');
     this.gameService.start();
-    this.startTimer = false;
-
-    // problem with input binding setters (timer.component.ts) is that property needs 
-    // to be changed else angular is clever enough to not run this code!
-    setTimeout( () => { 
-      this.startTimer = true; 
-    }, 0);
+    this.startTimerFn();
     return false; // don't propagate click event
   }
   restart() {
-    console.log('restart clicked');
     this.gameService.start();
-    this.restartTimer = false;
-    setTimeout( () => { 
-      this.restartTimer = true;
-    } , 0);
+    this.restartTimerFn();
     return false; // don't propagate click event
   }
   end() {
-    console.log('end clicked');
     this.gameService.end();
-    this.stopTimer = false;
-    setTimeout( () => { 
-      this.stopTimer = true; 
-    }, 0);
+    this.stopTimerFn();
     return false; // don't propagate click event
   }
 
+  private startTimerFn() {
+    this.startTimer = false;
+    // problem with input binding setters (timer.component.ts) is that property needs
+    // to be changed else angular is clever enough to not run this code!
+    setTimeout(() => {
+      this.startTimer = true;
+    }, 0);
+  }
+
+  private restartTimerFn() {
+    this.restartTimer = false;
+    setTimeout(() => {
+      this.restartTimer = true;
+    }, 0);
+  }
+
+  private stopTimerFn() {
+    this.stopTimer = false;
+    setTimeout(() => {
+      this.stopTimer = true;
+    }, 0);
+  }
 }
