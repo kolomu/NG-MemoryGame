@@ -13,6 +13,10 @@ import { Component } from '@angular/core';
   .container {
     width: 1000px;
     margin: 0 auto;
-  }`]
+  }
+  h1 {
+    margin-left: 20px;
+  }
+  `]
 })
 export class AppComponent { }

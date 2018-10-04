@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatProgressBarModule } from '@angular/material';
+import { MatProgressBarModule, MatButtonModule } from '@angular/material';
 
 import { FlipModule } from 'ngx-flip';
 
@@ -26,7 +26,8 @@ import { SkillComponent } from './skill/skill.component';
     BrowserModule,
     BrowserAnimationsModule,
     FlipModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,9 +5,9 @@ import { GameService, GameState } from '../game.service';
   selector: 'app-dashboard',
   template: `
   <div class="dashboard">
-    <a href class="button primary" id="start-button" (click)="start()">start</a>
-    <a href class="button" id="restart-button" (click)="restart()">restart</a>
-    <a href class="button secondary" id="end-button" (click)="end()">end</a>
+    <button mat-raised-button color="primary" class="mat-button" (click)="start()" id="start-button">Start</button>
+    <button mat-raised-button color="accent" class="mat-button" (click)="restart()" id="restart-button">Restart</button>
+    <button mat-raised-button color="warn" class="mat-button" (click)="end()" id="end-button">End</button>
     <span class="remaining-cards" *ngIf="gameState === 1 || gameState === 2">Cards Remaining: {{ remainingCards }}</span>
     <app-timer [start]="startTimer" [stop]="stopTimer" [restart]="restartTimer"></app-timer>
     <app-skill *ngIf="gameState === 1 || gameState === 2"></app-skill>
@@ -16,12 +16,15 @@ import { GameService, GameState } from '../game.service';
   styles: [
     `
       .dashboard {
-        margin-left: 10px;
+        margin-left: 20px;
       }
       .remaining-cards {
         float: right;
         display: inline-block;
         margin-top: 15px;
+      }
+      .mat-button {
+        margin-right: 10px;
       }
     `
   ]
