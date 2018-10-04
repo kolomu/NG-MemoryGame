@@ -9,11 +9,9 @@ export class CardService {
   private readonly _cards: Card[] = [];
   public flipCard$ = new Subject<Card>();
 
-  constructor() { }
-
   get cards() {
-    this.shuffleCards();
     this.resetCards();
+    this.shuffleCards();
     return this._cards;
   }
 

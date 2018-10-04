@@ -8,7 +8,15 @@ import { GameService, GameState } from '../game.service';
 @Component({
   selector: 'app-card-list',
   templateUrl: './card-list.component.html',
-  styleUrls: ['./card-list.component.scss'],
+  styles: [
+    `
+      .memory-div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    `
+  ],
   animations: [
     trigger('show', [
       transition(':enter', [style({ opacity: 0 }), animate('1s', style({ opacity: 1 }))]),
@@ -46,11 +54,17 @@ export class CardListComponent implements OnInit {
     }
 
     this.gameService.state$.subscribe(gs => {
-      this.gameState = gs;
-      // fix remaining cards bug
-      if (gs === GameState.START) {
-        this.remainingCards = this.cardService.cards.length;
-      }
+      // fix: card bug when restarting game and matched cards
+      this.gameState = GameState.END;
+      setTimeout(() => {
+        this.gameState = gs;
+        // fix remaining cards bug
+        if (gs === GameState.START) {
+          this.remainingCards = this.cardService.cards.length;
+          this.activeCard1 = null;
+          this.activeCard2 = null;
+        }
+      }, 350);
     });
   }
 
@@ -66,12 +80,13 @@ export class CardListComponent implements OnInit {
         return;
       }
     }
-    if (this.activeCard2) {
-      if (this.activeCard2.id === card.id) {
-        console.log('same card selected :|');
-        return;
-      }
-    }
+
+    // if (this.activeCard2) {
+    //   if (this.activeCard2.id === card.id) {
+    //     console.log('same card selected :|');
+    //     return;
+    //   }
+    // }
 
     if (this.activeCard1 && !this.activeCard2) {
       this.setCard(card);

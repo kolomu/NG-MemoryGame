@@ -78,9 +78,10 @@ export class DashboardComponent {
     this.startTimer = false;
     // problem with input binding setters (timer.component.ts) is that property needs
     // to be changed else angular is clever enough to not run this code!
+    // start timer after 1 second because of waiting for animations to finish.
     setTimeout(() => {
       this.startTimer = true;
-    }, 0);
+    }, 1000);
   }
 
   private restartTimerFn() {
