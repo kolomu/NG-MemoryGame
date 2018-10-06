@@ -10,7 +10,8 @@
 - [x] Play sound when card matches
 - [x] Start / Pause / Restart Button
 - [x] Timer Component which shows how much time has passed
-- [x] SKill-Bar Component
+- [x] Skill-Bar Component
+- [ ] 4x4 Layout for all screen sizes
 - [ ] Congratulations Modal
 - [ ] Submit Score to List
 - [ ] Highscore List
