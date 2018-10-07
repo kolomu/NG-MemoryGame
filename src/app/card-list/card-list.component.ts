@@ -10,10 +10,10 @@ import { GameService, GameState } from '../game.service';
   templateUrl: './card-list.component.html',
   styles: [
     `
-      .memory-div {
+      .card-row {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-wrap: nowrap;
+        background-color: orange;
       }
     `
   ],
@@ -25,7 +25,7 @@ import { GameService, GameState } from '../game.service';
   ]
 })
 export class CardListComponent implements OnInit {
-  readonly frontImagePath = '../assets/img/front.png';
+  readonly frontImagePath = 'assets/img/front.png';
   cards: Card[] = [];
   cardrow1: Card[] = [];
   cardrow2: Card[] = [];
@@ -39,14 +39,14 @@ export class CardListComponent implements OnInit {
 
   constructor(private cardService: CardService, private gameService: GameService) {
     try {
-      this.cardService.createCard(new Card(1, this.frontImagePath, '../assets/img/back1.png'));
-      this.cardService.createCard(new Card(2, this.frontImagePath, '../assets/img/back2.png'));
-      this.cardService.createCard(new Card(3, this.frontImagePath, '../assets/img/back3.png'));
-      this.cardService.createCard(new Card(4, this.frontImagePath, '../assets/img/back4.png'));
-      this.cardService.createCard(new Card(5, this.frontImagePath, '../assets/img/back5.png'));
-      this.cardService.createCard(new Card(6, this.frontImagePath, '../assets/img/back6.png'));
-      this.cardService.createCard(new Card(7, this.frontImagePath, '../assets/img/back7.png'));
-      this.cardService.createCard(new Card(8, this.frontImagePath, '../assets/img/back8.png'));
+      this.cardService.createCard(new Card(1, this.frontImagePath, 'assets/img/back1.png'));
+      this.cardService.createCard(new Card(2, this.frontImagePath, 'assets/img/back2.png'));
+      this.cardService.createCard(new Card(3, this.frontImagePath, 'assets/img/back3.png'));
+      this.cardService.createCard(new Card(4, this.frontImagePath, 'assets/img/back4.png'));
+      this.cardService.createCard(new Card(5, this.frontImagePath, 'assets/img/back5.png'));
+      this.cardService.createCard(new Card(6, this.frontImagePath, 'assets/img/back6.png'));
+      this.cardService.createCard(new Card(7, this.frontImagePath, 'assets/img/back7.png'));
+      this.cardService.createCard(new Card(8, this.frontImagePath, 'assets/img/back8.png'));
       this.cards = this.cardService.cards;
       if (this.cards.length !== 16) {
         console.warn('16 cards are required!');

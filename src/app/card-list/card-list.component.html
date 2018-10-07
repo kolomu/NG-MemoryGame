@@ -1,4 +1,4 @@
-<div class="memory-div" @show *ngIf="this.gameState === 1">
+<div class="memory-div" @show *ngIf="this.gameState == 1">
   <div class="card-row">
     <app-card [card]="card" [flip]="card.flipped" *ngFor="let card of cardrow1" (cardSelection)="handleCardSelection($event)"></app-card>
   </div>

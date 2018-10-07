@@ -15,6 +15,9 @@
 
 # Changelog
 
+### 0.0.6
+- [x] included assets
+
 ### 0.0.5
 - [x] Time Pipe
 

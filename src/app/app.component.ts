@@ -32,6 +32,7 @@ export class AppComponent {
   skill: number;
 
   // show finish modal if appropriate
+  // using sweetalert for practice to interact with third-party libs in Angular
   constructor(
     private _gameService: GameService,
     private _resolver: ComponentFactoryResolver,
