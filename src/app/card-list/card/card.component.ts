@@ -9,7 +9,7 @@ import { CardService } from '../../card.service';
 })
 export class CardComponent {
   @Input() card: Card;
-  @Input() protected flip = false;
+  @Input() flip = false;
   @Output() cardSelection = new EventEmitter<Card>();
   clicked = false;
 

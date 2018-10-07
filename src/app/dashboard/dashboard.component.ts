@@ -48,9 +48,9 @@ export class DashboardComponent {
   remainingCards: number;
   gameState: GameState;
 
-  protected startTimer = false;
-  protected stopTimer = false;
-  protected restartTimer = false;
+  startTimer = false;
+  stopTimer = false;
+  restartTimer = false;
 
   constructor(private gameService: GameService) {
     this.gameService.remainingCards$.subscribe(
