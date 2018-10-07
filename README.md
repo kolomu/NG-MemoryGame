@@ -11,12 +11,16 @@
 - [x] Start / Pause / Restart Button
 - [x] Timer Component which shows how much time has passed
 - [x] Skill-Bar Component
-- [ ] 4x4 Layout for all screen sizes
 - [ ] Congratulations Modal
 - [ ] Submit Score to List
 - [ ] Highscore List
 
 # Changelog
+
+### 0.0.3
+- [x] 4x4 Layout on Medium Devices
+- [x] increased difficulty
+- [x] fixed timer bug where count is bigger than 100
 
 ### 0.0.2
 - [x] Skill-Bar Component
