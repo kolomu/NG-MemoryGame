@@ -4,8 +4,7 @@ import { CardService } from '../../card.service';
 
 @Component({
   selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+  templateUrl: './card.component.html'
 })
 export class CardComponent {
   @Input() card: Card;

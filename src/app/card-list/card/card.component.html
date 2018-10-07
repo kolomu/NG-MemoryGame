@@ -2,11 +2,9 @@
   <ngx-flip [flip]="flip" (click)="onCardClick()">
     <audio *ngIf="clicked" src="assets/sound/click.ogg" autoplay></audio>
     <div front class="front">
-      <!-- <img [src]="card.frontImage" width="250px" height="250px" draggable="false" class="select-disable" style="display: none;"> -->
       <div class="img-div" [style.background-image]="'url('+ card.frontImage + ')'"></div>
     </div>
     <div back class="back">
-      <!-- <img [src]="card.backImage" width="250px" height="250px" draggable="false" class="select-disable" style="display: none;"> -->
       <div class="img-div" [style.background-image]="'url(' + card.backImage + ')'"></div>
     </div>
   </ngx-flip>
