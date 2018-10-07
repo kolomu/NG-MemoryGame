@@ -15,6 +15,9 @@
 
 # Changelog
 
+### 1.0.0
+- [x] first release (fixed missing images)
+
 ### 0.0.6
 - [x] included assets
 

@@ -13,7 +13,6 @@ import { GameService, GameState } from '../game.service';
       .card-row {
         display: flex;
         flex-wrap: nowrap;
-        background-color: orange;
       }
     `
   ],
