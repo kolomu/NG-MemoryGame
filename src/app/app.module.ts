@@ -13,6 +13,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TimerComponent } from './timer/timer.component';
 import { SkillComponent } from './skill/skill.component';
 import { FinishModalComponent } from './finish-modal/finish-modal.component';
+import { TimePipe } from './time.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FinishModalComponent } from './finish-modal/finish-modal.component';
     DashboardComponent,
     TimerComponent,
     SkillComponent,
-    FinishModalComponent
+    FinishModalComponent,
+    TimePipe
   ],
   imports: [
     BrowserModule,

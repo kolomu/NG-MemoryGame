@@ -12,10 +12,11 @@
 - [x] Timer Component which shows how much time has passed
 - [x] Skill-Bar Component
 - [x] Finish Modal
-- [ ] Submit Score to List
-- [ ] Highscore List
 
 # Changelog
+
+### 0.0.5
+- [x] Time Pipe
 
 ### 0.0.4
 - [x] Finish Modal

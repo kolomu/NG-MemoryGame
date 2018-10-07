@@ -4,8 +4,8 @@ import { Component, Input } from '@angular/core';
   selector: 'app-finish-modal',
   template: `
   <h2>{{result ? 'Victory' : 'Defeat'}}</h2>
-  <span>Time: {{time}}</span>
-  <span *ngIf="skill">Skill: {{skill}}</span>
+  <p>Time <br>{{time | time}}</p>
+  <span *ngIf="skill">Skill: {{skill}}</span><br>
   <span *ngIf="result">Points: {{getPoints()}}</span>
   `
 })
