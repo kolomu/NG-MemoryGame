@@ -6,18 +6,28 @@ import { GameService, GameState } from '../game.service';
 @Component({
   selector: 'app-skill',
   template: `
-  <div style="inline-block">
-  <h3>Skill-Bar:</h3>
+  <div class="skill-cmp">
+  <strong>Skill</strong>
   <mat-progress-bar mode="determinate" [color]="skillColor" [value]="skill"></mat-progress-bar>
   </div>
   `,
-  styles: [
-    `
-      span {
-        color: blue;
-      }
-    `
-  ]
+  styles: [`
+    span {
+      color: blue;
+    }
+
+    .skill-cmp {
+      padding-top:15px;
+      padding-bottom:10px;
+    }
+
+    .mat-progress-bar {
+      display: inline-block;
+      height: 15px;
+      width: 592px;
+      margin-left: 15px;
+    }
+  `]
 })
 export class SkillComponent {
   amountOfCards = 0;
@@ -28,7 +38,7 @@ export class SkillComponent {
 
   constructor(private cardService: CardService, private gameService: GameService) {
     this.amountOfCards = this.cardService.cards.length;
-    this.optimalFlips = this.amountOfCards * 2;
+    this.optimalFlips = this.amountOfCards * 1.5;
 
     this.gameService.state$.subscribe(
       (gameState: GameState) => {

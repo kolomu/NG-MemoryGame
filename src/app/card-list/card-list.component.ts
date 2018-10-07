@@ -27,6 +27,11 @@ import { GameService, GameState } from '../game.service';
 export class CardListComponent implements OnInit {
   readonly frontImagePath = '../assets/img/front.png';
   cards: Card[] = [];
+  cardrow1: Card[] = [];
+  cardrow2: Card[] = [];
+  cardrow3: Card[] = [];
+  cardrow4: Card[] = [];
+
   activeCard1: Card;
   activeCard2: Card;
   remainingCards: number;
@@ -47,7 +52,15 @@ export class CardListComponent implements OnInit {
       // this.cardService.createCard(new Card(11, this.frontImagePath, '../assets/img/back11.png'));
       // this.cardService.createCard(new Card(12, this.frontImagePath, '../assets/img/back12.png'));
       this.cards = this.cardService.cards;
-      this.gameService.remainingCards$.next(this.cards.length);
+      if (this.cards.length !== 16) {
+        console.warn('16 cards are required!');
+      } else {
+        this.cardrow1 = this.cards.slice(0, 4);
+        this.cardrow2 = this.cards.slice(4, 8);
+        this.cardrow3 = this.cards.slice(8, 12);
+        this.cardrow4 = this.cards.slice(12, 16);
+        this.gameService.remainingCards$.next(this.cards.length);
+      }
     } catch (err) {
       console.log('Some error happened while creating the cards...');
       console.log(err);

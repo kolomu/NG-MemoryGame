@@ -1,7 +1,22 @@
-<div class="memory-div" @show *ngIf="this.gameState === 1">
+<!-- <div class="memory-div" @show *ngIf="this.gameState === 1">
   <app-card
     [card]="card"
     [flip]="card.flipped"
     *ngFor="let card of cards"
     (cardSelection)="handleCardSelection($event)"></app-card>
+</div> -->
+
+<div class="memory-div" @show *ngIf="this.gameState === 1">
+  <div class="card-row">
+    <app-card [card]="card" [flip]="card.flipped" *ngFor="let card of cardrow1" (cardSelection)="handleCardSelection($event)"></app-card>
+  </div>
+  <div class="card-row">
+    <app-card [card]="card" [flip]="card.flipped" *ngFor="let card of cardrow2" (cardSelection)="handleCardSelection($event)"></app-card>
+  </div>
+  <div class="card-row">
+    <app-card [card]="card" [flip]="card.flipped" *ngFor="let card of cardrow3" (cardSelection)="handleCardSelection($event)"></app-card>
+  </div>
+  <div class="card-row">
+    <app-card [card]="card" [flip]="card.flipped" *ngFor="let card of cardrow4" (cardSelection)="handleCardSelection($event)"></app-card>
+  </div>
 </div>

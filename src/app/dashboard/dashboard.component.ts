@@ -16,12 +16,12 @@ import { GameService, GameState } from '../game.service';
   styles: [
     `
       .dashboard {
-        margin-left: 20px;
+        margin-left: 14px;
       }
       .remaining-cards {
         float: right;
         display: inline-block;
-        margin-top: 15px;
+        margin-top: 5px;
       }
       .mat-button {
         margin-right: 10px;

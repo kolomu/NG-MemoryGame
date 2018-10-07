@@ -71,7 +71,7 @@ export class TimerComponent {
     }
 
     if (timeStringUnmodified.length > 3) {
-      timeString = this.stringInsert(timeStringUnmodified, ':', 2);
+      timeString = this.stringInsert(timeStringUnmodified, ':', timeStringUnmodified.length - 2);
     }
 
     return timeString;

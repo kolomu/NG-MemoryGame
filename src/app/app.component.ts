@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
   `,
   styles: [`
   .container {
-    max-width: 1000px;
+    max-width: 660px;
     margin: 0 auto;
   }
   h1 {
