@@ -5,11 +5,22 @@ import { GameService, GameState } from '../game.service';
   selector: 'app-dashboard',
   template: `
   <div class="dashboard">
-    <button mat-raised-button color="primary" class="mat-button" (click)="start()" id="start-button">Start</button>
-    <button mat-raised-button color="accent" class="mat-button" (click)="restart()" id="restart-button">Restart</button>
-    <button mat-raised-button color="warn" class="mat-button" (click)="end()" id="end-button">End</button>
+    <button mat-raised-button color="primary"
+      class="mat-button"
+      (click)="start()"
+      id="start-button">Start</button>
+    <button mat-raised-button color="accent"
+      class="mat-button"
+      [ngClass]="{'hidden': !gameState || gameState !== 1 }"
+      (click)="restart()"
+      id="restart-button">Restart</button>
+    <button mat-raised-button color="warn"
+      class="mat-button"
+      [ngClass]="{'hidden': !gameState || gameState !== 1 }"
+      (click)="end()"
+      id="end-button">End</button>
     <span class="remaining-cards" *ngIf="gameState === 1 || gameState === 2">Cards Remaining: {{ remainingCards }}</span>
-    <app-timer [start]="startTimer" [stop]="stopTimer" [restart]="restartTimer"></app-timer>
+    <app-timer [start]="startTimer" [stop]="stopTimer" [restart]="restartTimer" (timeEE)="updateTime($event)"></app-timer>
     <app-skill *ngIf="gameState === 1 || gameState === 2"></app-skill>
   </div>
   `,
@@ -25,6 +36,10 @@ import { GameService, GameState } from '../game.service';
       }
       .mat-button {
         margin-right: 10px;
+      }
+
+      .hidden {
+        display: none;
       }
     `
   ]
@@ -54,6 +69,10 @@ export class DashboardComponent {
           this.stopTimerFn();
           break;
         }
+        case GameState.ENDWIN: {
+          this.stopTimerFn();
+          break;
+        }
       }
     });
 
@@ -73,7 +92,7 @@ export class DashboardComponent {
     return false; // don't propagate click event
   }
   end() {
-    this.gameService.end();
+    this.gameService.endLose();
     this.stopTimerFn();
     return false; // don't propagate click event
   }
@@ -101,4 +120,9 @@ export class DashboardComponent {
       this.stopTimer = true;
     }, 0);
   }
+
+  updateTime(time: number) {
+    this.gameService.time$.next(time);
+  }
+
 }

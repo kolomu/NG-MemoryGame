@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-timer',
@@ -9,6 +9,7 @@ import { Component, Input } from '@angular/core';
 export class TimerComponent {
   timeElapsed = 0;
   private timerId;
+  @Output() timeEE = new EventEmitter<Number>();
 
   @Input()
   set start(shouldStart: boolean) {
@@ -41,6 +42,9 @@ export class TimerComponent {
   }
 
   private stopTimer() {
+    if (this.timeElapsed) {
+      this.timeEE.emit(this.timeElapsed);
+    }
     clearInterval(this.timerId);
   }
 

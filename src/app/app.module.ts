@@ -12,6 +12,7 @@ import { CardListComponent } from './card-list/card-list.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TimerComponent } from './timer/timer.component';
 import { SkillComponent } from './skill/skill.component';
+import { FinishModalComponent } from './finish-modal/finish-modal.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SkillComponent } from './skill/skill.component';
     CardListComponent,
     DashboardComponent,
     TimerComponent,
-    SkillComponent
+    SkillComponent,
+    FinishModalComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +32,7 @@ import { SkillComponent } from './skill/skill.component';
     MatButtonModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ FinishModalComponent ]
 })
 export class AppModule { }

@@ -58,6 +58,7 @@ export class SkillComponent {
 
   calculateSkill() {
     if (this.currentFlips < this.optimalFlips) {
+      this.gameService.skill$.next(100);
       return;
     }
     const subtractAmount = (this.currentFlips - this.optimalFlips) * 10;
@@ -73,5 +74,7 @@ export class SkillComponent {
       this.skill = 0;
       this.skillColor = 'red';
     }
+
+    this.gameService.skill$.next(this.skill);
   }
 }

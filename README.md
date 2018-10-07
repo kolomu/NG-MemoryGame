@@ -11,11 +11,14 @@
 - [x] Start / Pause / Restart Button
 - [x] Timer Component which shows how much time has passed
 - [x] Skill-Bar Component
-- [ ] Congratulations Modal
+- [x] Finish Modal
 - [ ] Submit Score to List
 - [ ] Highscore List
 
 # Changelog
+
+### 0.0.4
+- [x] Finish Modal
 
 ### 0.0.3
 - [x] 4x4 Layout on Medium Devices
