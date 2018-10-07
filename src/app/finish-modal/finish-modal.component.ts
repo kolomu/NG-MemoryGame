@@ -22,7 +22,9 @@ export class FinishModalComponent {
 
     this._finalTime += this.time;
 
-    return this._finalTime;
+    // the higher the time the less points you get :)
+    const points = 100000 - this._finalTime;
+    return this._finalTime > 100000 ? 0 : points;
   }
 
   private getPenality(): number {
